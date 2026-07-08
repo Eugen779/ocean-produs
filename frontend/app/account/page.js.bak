@@ -1,0 +1,19 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function AccountRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/account/login');
+    } else {
+      router.push('/account');
+    }
+  }, [router]);
+
+  return <div>Se redirecționează...</div>;
+}
